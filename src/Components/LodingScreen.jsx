@@ -1,83 +1,45 @@
-import React from "react";
-import { Skeleton } from "@heroui/react";
-
-export default function LodingScreen() {
-    return (
-        <div className="w-full max-w-xl mx-auto bg-white rounded-xl shadow-sm p-4">
-
-            {/* Header */}
-            <div className="flex items-center gap-3">
-
-                {/* Avatar */}
-                <Skeleton className="rounded-full">
-                    <div className="w-10 h-10 rounded-full bg-default-300" />
-                </Skeleton>
-
-                {/* Name + time */}
-                <div className="flex flex-col gap-2">
-                    <Skeleton className="rounded-lg">
-                        <div className="h-3 w-32 rounded-lg bg-default-300" />
-                    </Skeleton>
-
-                    <Skeleton className="rounded-lg">
-                        <div className="h-2 w-20 rounded-lg bg-default-300" />
-                    </Skeleton>
-                </div>
-
+export default function LodingScreen({ count = 2 }) {
+  return (
+    <div className="space-y-4 w-full">
+      {Array.from({ length: count }).map((_, idx) => (
+        <div
+          key={idx}
+          className="w-full bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 animate-pulse"
+        >
+          {/* Header */}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-slate-200" />
+            <div className="space-y-2 flex-1">
+              <div className="h-3.5 bg-slate-200 rounded-md w-32" />
+              <div className="h-2.5 bg-slate-100 rounded-md w-20" />
             </div>
+          </div>
 
-            {/* Post Text */}
-            <div className="mt-4 flex flex-col gap-2">
+          {/* Post Text */}
+          <div className="mt-4 space-y-2">
+            <div className="h-3 bg-slate-200 rounded-md w-full" />
+            <div className="h-3 bg-slate-200 rounded-md w-4/5" />
+            <div className="h-3 bg-slate-100 rounded-md w-2/3" />
+          </div>
 
-                <Skeleton className="rounded-lg">
-                    <div className="h-3 w-full rounded-lg bg-default-300" />
-                </Skeleton>
+          {/* Post Image Skeleton */}
+          <div className="h-60 w-full rounded-xl bg-slate-200/80 mt-4" />
 
-                <Skeleton className="rounded-lg">
-                    <div className="h-3 w-4/5 rounded-lg bg-default-300" />
-                </Skeleton>
+          {/* Reactions bar */}
+          <div className="flex justify-between items-center mt-4 pt-3 border-t border-slate-100">
+            <div className="h-3 bg-slate-200 rounded-md w-16" />
+            <div className="h-3 bg-slate-200 rounded-md w-24" />
+          </div>
 
-            </div>
-
-            {/* Post Image */}
-            <Skeleton className="rounded-lg mt-4">
-                <div className="h-64 w-full rounded-lg bg-default-300" />
-            </Skeleton>
-
-            {/* Reactions */}
-            <div className="flex justify-between mt-4">
-
-                <Skeleton className="rounded-lg">
-                    <div className="h-3 w-16 rounded-lg bg-default-300" />
-                </Skeleton>
-
-                <Skeleton className="rounded-lg">
-                    <div className="h-3 w-20 rounded-lg bg-default-300" />
-                </Skeleton>
-
-                <Skeleton className="rounded-lg">
-                    <div className="h-3 w-16 rounded-lg bg-default-300" />
-                </Skeleton>
-
-            </div>
-
-            {/* Actions */}
-            <div className="flex justify-around mt-5 pt-3 border-t">
-
-                <Skeleton className="rounded-lg">
-                    <div className="h-4 w-14 rounded-lg bg-default-300" />
-                </Skeleton>
-
-                <Skeleton className="rounded-lg">
-                    <div className="h-4 w-20 rounded-lg bg-default-300" />
-                </Skeleton>
-
-                <Skeleton className="rounded-lg">
-                    <div className="h-4 w-14 rounded-lg bg-default-300" />
-                </Skeleton>
-
-            </div>
-
+          {/* Actions bar */}
+          <div className="grid grid-cols-4 gap-2 mt-2 pt-2 border-t border-slate-100">
+            <div className="h-8 bg-slate-100 rounded-xl" />
+            <div className="h-8 bg-slate-100 rounded-xl" />
+            <div className="h-8 bg-slate-100 rounded-xl" />
+            <div className="h-8 bg-slate-100 rounded-xl" />
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
