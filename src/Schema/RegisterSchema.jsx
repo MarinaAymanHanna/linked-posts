@@ -7,7 +7,13 @@
 
         username: Zod.string()
         .trim()
-        .nonempty("Username is required"),
+        .nonempty("Username is required")
+        .min(3, "Username must be at least 3 characters")
+        .max(20, "Username must be less than 20 characters")
+        .regex(
+            /^[a-zA-Z0-9._]+$/,
+            "Username can only contain letters, numbers, dots (.) and underscores (_). No spaces or special characters allowed."
+        ),
 
         email: Zod.string().trim().nonempty("Email is required")
         .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
